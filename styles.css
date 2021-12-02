@@ -89,6 +89,10 @@ p {
   min-height: 20vh;
 }
 
+.curved-div {
+  margin-top: -4px;
+}
+
 #info {
   /* 75% max on widest screen but full width on smaller screens */
   max-width: calc(1600px / 100 * 75);
