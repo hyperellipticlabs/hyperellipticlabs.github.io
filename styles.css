@@ -64,7 +64,7 @@ p {
   height: var(--preferred-header-size);
   min-height: var(--min-header-size);
   max-height: var(--max-header-size);
-  padding: calc(1vw + 8px);
+  padding: 8px calc(1vw + 8px);
   display: flex;
 }
 
