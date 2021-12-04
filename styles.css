@@ -1,27 +1,23 @@
-:root {
-  /* font-size: calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width]))); */
-  --header-font-size: calc(18px + (48 - 18) * ((100vw - 375px) / (1600 - 375)));
-  --font-size: calc(18px + (32 - 18) * ((100vw - 375px) / (1600 - 375)));
-  --min-header-size: 10vh;
-  --preferred-header-size: 25vh;
-  --max-header-size: 40vw;
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  font-family: inherit;
+  line-height: 1.4em;
 }
 
 body {
-  font-size: var(--font-size);
   font-family: "Courier New", monospace;
   background-image: linear-gradient(140deg, crimson 42%, gold 100%);
   background-size: 120% 100%, cover;
   background-repeat: no-repeat;
-  margin: 0;
   width: 100%;
   height: 100%;
 }
 
 h1 {
+  font-size: 2.6em;
   word-wrap: break-word;
-  margin: 0px;
-  font-size: calc(var(--header-font-size) * 2.5);
   background: -webkit-linear-gradient(0deg, mediumpurple 15%, crimson 40%, coral 69%, gold 75%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -38,62 +34,142 @@ h1:before {
 }
 
 h2 {
-  margin-top: -2px;
-  margin-left: 8px;
-  margin-bottom: 0px;
-  font-size: calc(var(--header-font-size) * 1.2);
+  font-size: 1.4em;
   background: -webkit-linear-gradient(0deg, mediumpurple 15%, crimson 40%, coral 69%, gold 75%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-p {
-  margin: 8px;
+.padded {
+  max-width: 1200px;
+  padding: 16px;
 }
 
-.wrapper {
+.flex-margined {
+  margin: 24px 0px;
+}
+
+#wrapper {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-.hero {
+#hero {
   background: #212529;
-  height: var(--preferred-header-size);
-  min-height: var(--min-header-size);
-  max-height: var(--max-header-size);
-  /* padding: 8px; */
   display: flex;
 }
 
-.header {
-  margin: 0px calc(1vw + 8px);
+#header {
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.curved-div svg {
-  filter: drop-shadow(3px 5px 1px rgb(0 0 0 / 0.1)) drop-shadow(0px 3px 2px rgb(0 0 0 / 0.3));
-}
-
-.main {
+#main {
   flex: 2;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: calc(1vw + 8px);
   min-height: 20vh;
 }
 
-.curved-div {
-  margin-top: -4px;
+#curved-div {
+  margin: -2px 0px;
 }
 
-#info {
-  /* 75% max on widest screen but full width on smaller screens */
-  max-width: calc(1600px / 100 * 75);
+#curved-div svg {
+  filter: drop-shadow(2px 4px 1px rgb(0 0 0 / 0.1)) drop-shadow(0px 3px 2px rgb(0 0 0 / 0.3));
+}
+
+/* BREAK(POINTS) STUFF */
+
+/* Mobile first for below 640 but above 360, everything else is media query. Breakpoints below except XXS are Tailwind defaults. */
+
+/* Extra extra Smol, like iPhone 5 and Galaxy Fold, ugh */
+@media screen and (max-width: 360px) {
+  body {
+    font-size: 0.8em;
+  }
+  h1 {
+    font-size: 2.4em;
+  }
+}
+
+/* Small */
+@media screen and (min-width: 640px) {
+  body {
+    font-size: 1.2em;
+  }
+  h1 {
+    font-size: 2.8em;
+  }
+}
+
+/* Medium */
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 1.4em;
+    line-height: 2.6rem;
+  }
+
+  .padded {
+    padding: 24px;
+  }
+}
+
+/* Lorge */
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 2em;
+  }
+
+  #header {
+    padding-top: 48px;
+  }
+
+  #curved-div {
+    margin: -24px 0px;
+  }
+
+  #main {
+    padding-bottom: 48px;
+  }
+}
+
+/* Extra-lorge */
+@media screen and (min-width: 1280px) {
+  h1 {
+    font-size: 3.2em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+/* Extra-extra-lorge */
+@media screen and (min-width: 1536px) {
+  h1 {
+    font-size: 3.4em;
+  }
+
+  #hero {
+    justify-content: center;
+  }
+
+  #header {
+    width: 1250px;
+  }
+
+  #main {
+    align-self: center;
+  }
+
+  #curved-div {
+    margin: -48px 0px;
+  }
 }
